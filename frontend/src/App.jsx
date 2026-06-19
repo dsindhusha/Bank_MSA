@@ -205,7 +205,10 @@ function validate(values) {
 
   if (!values.credit_score) {
     nextErrors.credit_score = "Credit score is required.";
-  } else if (Number(values.credit_score) < 300 || Number(values.credit_score) > 900) {
+  } else if (
+    Number(values.credit_score) < 300 ||
+    Number(values.credit_score) > 900
+  ) {
     nextErrors.credit_score = "Credit score must be between 300 and 900.";
   }
 
@@ -235,7 +238,10 @@ function getBadgeClass(value) {
     return "badge badge-green";
   }
 
-  if (normalizedValue.includes("rejected") || normalizedValue.includes("high")) {
+  if (
+    normalizedValue.includes("rejected") ||
+    normalizedValue.includes("high")
+  ) {
     return "badge badge-red";
   }
 
@@ -284,20 +290,25 @@ function App() {
     setServerError("");
 
     try {
-      const response = await axios.post("http://127.0.0.1:8000/apply-loan", {
-        ...formData,
-        age: Number(formData.age),
-        income: Number(formData.income),
-        loan_amount: Number(formData.loan_amount),
-        credit_score: Number(formData.credit_score),
-        existing_loans: Number(formData.existing_loans),
-        monthly_expenses: Number(formData.monthly_expenses),
-      });
+      const response = await axios.post(
+        "https://bank-msa-backend.onrender.com/apply-loan",
+        {
+          ...formData,
+          age: Number(formData.age),
+          income: Number(formData.income),
+          loan_amount: Number(formData.loan_amount),
+          credit_score: Number(formData.credit_score),
+          existing_loans: Number(formData.existing_loans),
+          monthly_expenses: Number(formData.monthly_expenses),
+        }
+      );
 
       setResult(response.data);
     } catch (error) {
       console.error(error);
-      setServerError("Unable to connect to the loan analysis service. Please try again.");
+      setServerError(
+        "Unable to connect to the loan analysis service. Please try again."
+      );
     } finally {
       setLoading(false);
     }
@@ -333,7 +344,11 @@ function App() {
             {fields.map((field) => (
               <div className="field-group" key={field.name}>
                 <label htmlFor={field.name}>{field.label}</label>
-                <div className={`input-shell ${errors[field.name] ? "input-error" : ""}`}>
+                <div
+                  className={`input-shell ${
+                    errors[field.name] ? "input-error" : ""
+                  }`}
+                >
                   <Icon name={field.icon} />
                   {field.type === "select" ? (
                     <select
@@ -365,7 +380,9 @@ function App() {
                     />
                   )}
                 </div>
-                {errors[field.name] && <span className="field-error">{errors[field.name]}</span>}
+                {errors[field.name] && (
+                  <span className="field-error">{errors[field.name]}</span>
+                )}
               </div>
             ))}
           </div>
@@ -422,7 +439,9 @@ function App() {
               <span className="eyebrow">Analysis Result</span>
               <h2>Loan Decision Summary</h2>
             </div>
-            <span className={getBadgeClass(result.decision)}>{result.decision}</span>
+            <span className={getBadgeClass(result.decision)}>
+              {result.decision}
+            </span>
           </div>
 
           <div className="result-grid">
@@ -432,7 +451,9 @@ function App() {
             </div>
             <div className="result-item">
               <span>Risk Level</span>
-              <strong className={getBadgeClass(result.risk)}>{result.risk}</strong>
+              <strong className={getBadgeClass(result.risk)}>
+                {result.risk}
+              </strong>
             </div>
             <div className="result-item result-wide">
               <span>Risk Reason</span>
@@ -453,7 +474,10 @@ function App() {
           </span>
           <div>
             <h2>How the Multi-Agent System Works</h2>
-            <p>Each step contributes a focused evaluation before the final notification.</p>
+            <p>
+              Each step contributes a focused evaluation before the final
+              notification.
+            </p>
           </div>
         </div>
 
