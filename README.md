@@ -22,25 +22,27 @@ Instead of relying on a single rule-based workflow, the application uses AI-powe
 
 ## Architecture
 
+```text
 Frontend (React)
-|
-v
+        |
+        v
 FastAPI Backend
-|
-v
+        |
+        v
 LangGraph Workflow
-|
-+-- Customer Agent
-|
-+-- Credit Agent
-|
-+-- Risk Agent (Groq AI)
-|
-+-- Decision Agent
-|
-+-- Reject Agent
-|
-+-- Notification Agent
+        |
+        +-- Customer Agent
+        |
+        +-- Credit Agent
+        |
+        +-- Risk Agent (Groq AI)
+        |
+        +-- Decision Agent
+        |
+        +-- Reject Agent
+        |
+        +-- Notification Agent
+```
 
 ## Tech Stack
 
@@ -153,26 +155,33 @@ Bank_MSA/
 
 ## User Flow
 
+```text
 Loan Application Form
-|
+        |
+        v
 Customer Agent
-|
+        |
+        v
 Credit Agent
-|
+        |
+        v
 Risk Analysis Agent
-|
-+-----------------------+
-|                       |
-| Risk = High           |
-|                       |
-v                       v
-Reject Agent      Decision Agent
-|                 |
-+--------+--------+
-|
-Notification Agent
-|
-Final Result
+        |
+        +----------------------+
+        |                      |
+        | Risk = High          |
+        |                      |
+        v                      v
+Reject Agent          Decision Agent
+        |                      |
+        +----------+-----------+
+                   |
+                   v
+         Notification Agent
+                   |
+                   v
+             Final Result
+```
 
 ## Agent Responsibilities
 
