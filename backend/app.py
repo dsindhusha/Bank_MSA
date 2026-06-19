@@ -7,14 +7,10 @@ app = FastAPI(
     title="Loan Approval Multi-Agent System"
 )
 
-# Allow React frontend to call FastAPI
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "https://bank-35ealy2ms-dsindhushas-projects.vercel.app"
-    ],
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
