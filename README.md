@@ -1,5 +1,3 @@
-A clean README for your project should focus on what you actually built and avoid sections that don't exist (database, deployment, live link, etc.).
-
 # Bank MSA - AI Loan Approval System
 
 ## Description
