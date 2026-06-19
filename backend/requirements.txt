@@ -1,6 +1,6 @@
 langgraph
 fastapi
-uvicornlanggraph
+uvicorn
 fastapi
 uvicorn
 langchain-groq
