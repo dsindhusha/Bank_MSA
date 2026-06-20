@@ -1,5 +1,11 @@
 # Bank MSA - AI Loan Approval System
+---
 
+## Live Link
+
+[https://bank-msa.vercel.app/](https://bank-msa.vercel.app/)
+
+---
 ## Description
 
 Bank MSA is an AI-powered Loan Approval System built using a Multi-Agent System Architecture (MSA).
